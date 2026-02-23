@@ -56,6 +56,10 @@ jobs:
           cd dist
           Compress-Archive -Path "endfield-essence-recognizer/*" -DestinationPath "endfield-essence-recognizer-${{ github.ref_name }}-${{ matrix.os }}.zip"
 
+      - name: Create Tag
+        run: |
+          git tag v1.0.0
+          git push origin v1.0.0
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
